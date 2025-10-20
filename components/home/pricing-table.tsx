@@ -111,7 +111,7 @@ export default function PricingTable() {
                 </div>
 
                 <Button asChild className="w-full bg-brand-primary text-white mt-auto rounded-lg hover:bg-brand-primary-dark">
-                  <Link href="/hosting/signup">Sign Up</Link>
+                  <Link href="/register-domain">Sign Up</Link>
                 </Button>
               </div>
             </div>
