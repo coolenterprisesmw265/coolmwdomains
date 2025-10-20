@@ -17,21 +17,21 @@ export default function Footer() {
             {/* Social Icons */}
             <div className="flex space-x-4 mt-4">
               <Link
-                  href="#"
+                  href="https://web.facebook.com/@coolenterprisesmw/"
                   aria-label="Facebook"
                   className="hover:text-foreground border-brand-primary border-2 rounded-full p-2"
               >
                 <Facebook className="w-5 h-5" />
               </Link>
               <Link
-                  href="#"
-                  aria-label="Twitter"
+                  href="https://www.linkedin.com/company/cool-enterprises-malawi"
+                  aria-label="LinkedIn"
                   className="hover:text-foreground border-brand-primary border-2 rounded-full p-2"
               >
-                <Twitter className="w-5 h-5" />
+                <Linkedin className="w-5 h-5" />
               </Link>
               <Link
-                  href="#"
+                  href="https://www.instagram.com/coolenterprises_mw/"
                   aria-label="Instagram"
                   className="hover:text-foreground border-brand-primary border-2 rounded-full p-2"
               >
@@ -89,15 +89,22 @@ export default function Footer() {
           {/* Support */}
           <div>
             <h3 className="text-lg font-bold mb-4">Support</h3>
+
             <div className="flex items-center space-x-2 mb-2">
               <Phone className="h-5 w-5" />
-              <span>+265 999 362 633</span>
+              <a href="tel:+265999362633" className="hover:underline">
+                +265 999 362 633
+              </a>
             </div>
+
             <div className="flex items-center space-x-2">
               <Mail className="h-5 w-5" />
-              <span>support@coolenterprisesmw.com</span>
+              <a href="mailto:support@coolenterprisesmw.com" className="hover:underline">
+                support@coolenterprisesmw.com
+              </a>
             </div>
           </div>
+
 
 
         </div>

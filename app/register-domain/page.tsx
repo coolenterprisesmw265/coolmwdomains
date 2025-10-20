@@ -194,6 +194,7 @@ export default function RegisterDomainPage() {
                     <CardContent>
                       <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                          {/* Full Name */}
                           <FormField
                             control={form.control}
                             name="fullName"
@@ -208,6 +209,7 @@ export default function RegisterDomainPage() {
                             )}
                           />
 
+                          {/* Organization */}
                           <FormField
                             control={form.control}
                             name="organization"
@@ -222,6 +224,7 @@ export default function RegisterDomainPage() {
                             )}
                           />
 
+                          {/* Email & Phone */}
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <FormField
                               control={form.control}
@@ -236,7 +239,6 @@ export default function RegisterDomainPage() {
                                 </FormItem>
                               )}
                             />
-
                             <FormField
                               control={form.control}
                               name="phone"
@@ -252,6 +254,7 @@ export default function RegisterDomainPage() {
                             />
                           </div>
 
+                          {/* Domain & Extension */}
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <FormField
                               control={form.control}
@@ -267,7 +270,6 @@ export default function RegisterDomainPage() {
                                 </FormItem>
                               )}
                             />
-
                             <FormField
                               control={form.control}
                               name="extension"
@@ -294,6 +296,7 @@ export default function RegisterDomainPage() {
                             />
                           </div>
 
+                          {/* Reason */}
                           <FormField
                             control={form.control}
                             name="reason"
@@ -312,11 +315,109 @@ export default function RegisterDomainPage() {
                             )}
                           />
 
+                          {/* Hosting Option */}
+                          <FormField
+                            control={form.control}
+                            name="hostWithUs"
+                            render={({ field }) => (
+                              <FormItem className="flex items-center gap-2">
+                                <input type="checkbox" {...field} />
+                                <FormLabel>Host with us?</FormLabel>
+                              </FormItem>
+                            )}
+                          />
+
+                          {/* Hosting Package (if hosting) */}
+                          {form.watch("hostWithUs") && (
+                            <FormField
+                              control={form.control}
+                              name="hostingPackage"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Select Hosting Package</FormLabel>
+                                  <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <SelectTrigger>
+                                      <SelectValue placeholder="Select hosting plan" />
+                                    </SelectTrigger>
+                                    <SelectContent>
+                                      {[
+                                        { value: "basic", label: "Basic Hosting - 150,000 MWK/yr" },
+                                        { value: "business", label: "Business Hosting - 300,000 MWK/yr" },
+                                        { value: "premium", label: "Premium Hosting - 500,000 MWK/yr" },
+                                      ].map((pkg) => (
+                                        <SelectItem key={pkg.value} value={pkg.value}>
+                                          {pkg.label}
+                                        </SelectItem>
+                                      ))}
+                                    </SelectContent>
+                                  </Select>
+                                </FormItem>
+                              )}
+                            />
+                          )}
+
+                          {/* Nameservers (if NOT hosting) */}
+                          {!form.watch("hostWithUs") && (
+                            <FormField
+                              control={form.control}
+                              name="nameservers"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel>Nameservers (optional)</FormLabel>
+                                  <FormControl>
+                                    <Input placeholder="ns1.yourhost.com, ns2.yourhost.com" {...field} />
+                                  </FormControl>
+                                </FormItem>
+                              )}
+                            />
+                          )}
+
+                          {/* Payment Method */}
+                          <FormField
+                            control={form.control}
+                            name="paymentMethod"
+                            render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Payment Method</FormLabel>
+                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                  <SelectTrigger>
+                                    <SelectValue placeholder="Select payment method" />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    <SelectItem value="bank">Direct Bank Transfer</SelectItem>
+                                    <SelectItem value="mobile-money">Mobile Money (Airtel, TNM)</SelectItem>
+                                    <SelectItem value="card">Card Payment</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </FormItem>
+                            )}
+                          />
+
+                          {/* Bank Details */}
+                          {form.watch("paymentMethod") === "bank" && (
+                            <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-700 space-y-2">
+                              <p><strong>Bank:</strong> NBS Bank</p>
+                              <p><strong>Account Name:</strong> Cool Enterprises Ltd</p>
+                              <p><strong>Account Number:</strong> 1234567890</p>
+                              <p><strong>Branch:</strong> Lilongwe</p>
+                            </div>
+                          )}
+
+                          {/* Mobile Money Details */}
+                          {form.watch("paymentMethod") === "mobile-money" && (
+                            <div className="bg-gray-50 p-4 rounded-lg text-sm text-gray-700 space-y-2">
+                              <p><strong>Airtel Money:</strong> 0999 123 456</p>
+                              <p><strong>TNM Mpamba:</strong> 0888 654 321</p>
+                              <p>Please include your domain name in the payment reference.</p>
+                            </div>
+                          )}
+
                           <Button type="submit" variant={"primary"} className="w-full rounded-lg">
                             Search & Register
                           </Button>
                         </form>
                       </Form>
+
                     </CardContent>
                   </Card>
                 </div>
