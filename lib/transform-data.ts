@@ -1,9 +1,17 @@
-import { gql, GraphQLClient } from "graphql-request"
+/*import { gql, GraphQLClient } from "graphql-request"
 
 const hygraphClient = new GraphQLClient(
     process.env.HYGRAPH_API_URL || "https://eu-west-2.cdn.hygraph.com/content/cmbqefdwd006g07uyhl9udvav/master",
 )
 
+// Add or ensure this export exists in the file
+export function transformHygraphPosts(posts: any[]): any[] {
+  // Implement the transformation logic here
+  return posts.map(post => ({
+    ...post,
+    transformed: true, // Example transformation
+  }));
+}
 // Updated GraphQL queries to match your exact schema
 export const GET_ALL_POSTS = gql`
   query GetAllPosts($first: Int, $skip: Int) {
@@ -381,4 +389,4 @@ export async function debugSchema() {
         console.error("Error debugging schema:", error)
         return null
     }
-}
+}*/

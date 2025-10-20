@@ -30,6 +30,10 @@ const formSchema = z.object({
     required_error: "Please select a domain extension.",
   }),
   reason: z.string().optional(),
+  hostWithUs: z.boolean().optional(),
+  hostingPackage: z.string().optional(),
+  nameservers: z.string().optional(),
+  paymentMethod: z.string().optional(),
 })
 
 export default function RegisterDomainPage() {
@@ -44,6 +48,11 @@ export default function RegisterDomainPage() {
       phone: "",
       domain: "",
       reason: "",
+      extension: "",
+      hostWithUs: false,
+      hostingPackage: "",
+      nameservers: "",
+      paymentMethod: "",
     },
   })
 
@@ -321,11 +330,20 @@ export default function RegisterDomainPage() {
                             name="hostWithUs"
                             render={({ field }) => (
                               <FormItem className="flex items-center gap-2">
-                                <input type="checkbox" {...field} />
+                                <input
+                                  type="checkbox"
+                                  checked={field.value || false}
+                                  onChange={(e) => field.onChange(e.target.checked)}
+                                  onBlur={field.onBlur}
+                                  name={field.name}
+                                  ref={field.ref}
+                                  className="h-4 w-4 rounded border-gray-300 text-brand-primary focus:ring-brand-primary"
+                                />
                                 <FormLabel>Host with us?</FormLabel>
                               </FormItem>
                             )}
                           />
+
 
                           {/* Hosting Package (if hosting) */}
                           {form.watch("hostWithUs") && (
