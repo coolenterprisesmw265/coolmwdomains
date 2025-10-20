@@ -1,7 +1,7 @@
 "use client"
 
-import { useState, useMemo, useCallback, useEffect } from "react"
-import { getAllPosts, getCategories, getAllPostsForSearch } from "../lib/hygraph"
+/*import { useState, useMemo, useCallback, useEffect } from "react"
+//import { getAllPosts, getCategories, getAllPostsForSearch } from "../lib/hygraph"
 import { transformHygraphPosts } from "../lib/transform-data"
 import type { SearchablePost, HygraphCategory } from "../types/blog"
 
@@ -172,4 +172,4 @@ export function useHygraphSearch() {
     refreshData,
     hasActiveFilters: searchQuery.trim() !== "" || selectedCategory !== "All" || sortBy !== "newest",
   }
-}
+}*/

@@ -49,7 +49,7 @@ export default function GetStartedPage() {
           <Button asChild size="lg">
             <Link href="/hosting/signup">Register for Hosting</Link>
           </Button>
-          <Button asChild variant="outline" size="lg">
+          <Button asChild variant={"secondary"} size="lg">
             <Link href="/register-domain">Register a Domain</Link>
           </Button>
         </div>
